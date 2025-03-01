@@ -45,8 +45,15 @@ async function fetchTasks(url=apiUrl) {
     }
     if(url===apiUrl){
         taskList.innerHTML = tasks.map(task => createTaskHTML(task)).join("");
+        // Showing default message if no tasks exist
+        if (taskList.childElementCount === 0){
+            taskList.insertAdjacentHTML("afterbegin","Start with your first <span>To-Do</span> with the button below!<br><br>");
+        }
     }else{
         completedList.innerHTML = tasks.map(task => createTaskHTML(task, true)).join("");
+        if (completedList.childElementCount === 0){
+            completedList.insertAdjacentHTML("afterbegin","Complete a <span>To-Do</span> with a check button above!<br><br>");
+        }
     }
 }
 
@@ -141,6 +148,7 @@ function createTaskInputForm(existingTask, onConfirm) {
 
     let nameInput = document.createElement("input");
     nameInput.type = "text";
+    nameInput.required = true;
     nameInput.placeholder = "To-Do name";
     nameInput.value = existingTask?.Name || "";
     parentElement.appendChild(nameInput);
@@ -148,6 +156,7 @@ function createTaskInputForm(existingTask, onConfirm) {
     let deadlineInput = document.createElement("input");
     deadlineInput.type = "datetime-local";
     deadlineInput.placeholder = "To-Do deadline";
+    deadlineInput.required = true;
 
     if (existingTask?.Deadline && !Number.isNaN(new Date(existingTask.Deadline))) {
         deadlineInput.value = new Date(existingTask.Deadline).toISOString().slice(0, -8);
@@ -163,7 +172,6 @@ function createTaskInputForm(existingTask, onConfirm) {
     parentElement.appendChild(confirmBtn);
 
     let cancelBtn = document.createElement("button");
-    cancelBtn.insertAdjacentHTML("afterbegin","<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\" width=\"24px\" fill=\"#000000\"><path d=\"M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z\"/></svg>");
     cancelBtn.textContent = "Cancel";
     cancelBtn.className = "delete_btn";
     cancelBtn.onclick = () => parentElement.remove();
@@ -187,8 +195,3 @@ async function editTask(button, id) {
 // First fetch of tasks when the page loads
 fetchTasks();
 fetchTasks(apiURLCompleted);
-
-// Showing default message if no tasks exist
-if (taskList.childElementCount === 0){
-    taskList.insertAdjacentHTML("afterbegin","Start with your first <span>To-Do</span> with the button below!<br><br>");
-}
