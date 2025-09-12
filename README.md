@@ -7,14 +7,15 @@ A clean and simple to-do list application built with Node.js, Express, and Mongo
 ## 📸 Application Preview
 
 registration page -
-<img width="1788" height="865" alt="image" src="https://github.com/user-attachments/assets/e647a9ba-ca38-4e29-8132-10fbe182c802" />
+<img width="1600" height="600" alt="image" src="https://github.com/user-attachments/assets/e647a9ba-ca38-4e29-8132-10fbe182c802" />
 
 
 login page -
-<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/ed1effbf-9784-48ca-9b74-254b75030bff" />
+<img width="1600" height="600" alt="image" src="https://github.com/user-attachments/assets/6c426039-eaf1-41b0-8e75-1bdcb471b009" />
+
 
 Main page -
-<img width="1788" height="1725" alt="image" src="https://github.com/user-attachments/assets/22e100e9-1adc-4ee1-a9f9-1647fe3adc00" />
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/22e100e9-1adc-4ee1-a9f9-1647fe3adc00" />
 
 
 ![GIF of your application in action](link_to_your_gif.gif)
