@@ -1,0 +1,386 @@
+/* CSS HSL */
+/*--prussian-blue: hsla(43, 100%, 51%, 1);*/
+/*--selective-yellow: hsla(43, 100%, 51%, 1);*/
+/*--sky-blue: hsla(199, 64%, 73%, 1);*/
+/*--ut-orange: hsla(32, 100%, 49%, 1);*/
+/*--blue-green: hsla(192, 70%, 43%, 1);*/
+
+/* SCSS Gradient */
+/*$gradient-top: linear-gradient(0deg, #023047ff, #ffb703ff, #8ecae6ff, #fb8500ff, #219ebcff);*/
+/*$gradient-right: linear-gradient(90deg, #023047ff, #ffb703ff, #8ecae6ff, #fb8500ff, #219ebcff);*/
+/*$gradient-bottom: linear-gradient(180deg, #023047ff, #ffb703ff, #8ecae6ff, #fb8500ff, #219ebcff);*/
+/*$gradient-left: linear-gradient(270deg, #023047ff, #ffb703ff, #8ecae6ff, #fb8500ff, #219ebcff);*/
+/*$gradient-top-right: linear-gradient(45deg, #023047ff, #ffb703ff, #8ecae6ff, #fb8500ff, #219ebcff);*/
+/*$gradient-bottom-right: linear-gradient(135deg, #023047ff, #ffb703ff, #8ecae6ff, #fb8500ff, #219ebcff);*/
+/*$gradient-top-left: linear-gradient(225deg, #023047ff, #ffb703ff, #8ecae6ff, #fb8500ff, #219ebcff);*/
+/*$gradient-bottom-left: linear-gradient(315deg, #023047ff, #ffb703ff, #8ecae6ff, #fb8500ff, #219ebcff);*/
+/*$gradient-radial = radial-gradient(#023047ff, #ffb703ff, #8ecae6ff, #fb8500ff, #219ebcff);*/
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+     font-family: "Comic Sans MS", Arial, sans-serif;
+     background-color: hsla(199, 64%, 73%, 1);;
+ }
+
+
+/* Navigational Elements*/
+.nav_bar{
+    width: 100%;
+
+    position: sticky;
+    top: 0;
+    z-index: 99;
+
+}
+
+.nav_links{
+    display: flex;
+    gap: 1em;
+    background-color: hsla(192, 70%, 43%, 1);
+    border: 1px solid black;
+    border-radius: 10px;
+    list-style: none;
+    opacity: 0.9;
+    padding: 0.5em;
+    column-gap: 5%;
+    justify-content: center;
+}
+
+.nav_links li a :hover{
+    transform: scale(1.3);
+}
+
+.nav_links li a{
+    color: black;
+    text-decoration: none;
+    padding: 1em;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.hamburger{
+    color: white;
+    width: 1em;
+    height: 1em;
+    display: none;
+    cursor: pointer;
+    filter: drop-shadow(1px 3px 3px rgba(0, 0, 0, 0.5));
+    transition: drop-shadow 0.3s, transform 0.3s;
+}
+
+.hamburger:hover{
+    transform: scale(1.3);
+    filter: drop-shadow(1px 4px 4px rgba(0, 0, 0, 0.7));
+}
+
+
+/* Header section Elements */
+#header{
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 1) 100%),
+    url("../img/career-path-choices-organization.jpg") center/cover;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    min-width: 240px;
+}
+
+
+header h1{
+    font-size: clamp(2em, calc(7vw + 2rem), 5rem);
+    margin: 0.5em;
+    flex-shrink: 1;
+}
+span{
+    font-style: italic;
+}
+
+
+/* Container styling */
+h2{
+    color: white;
+    font-size: clamp(1.4em, calc(6vw + 0.75rem), 4rem);
+}
+
+#container {
+    width: 70%;
+    max-width: 1200px;
+    padding: 2em;
+    margin: 1em auto;
+
+    background: linear-gradient(35deg, #023047, rgba(0,0,0,0.7), rgba(0,0,0,0.9), #219ebc);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+}
+
+/* Lists container */
+#lists_container {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0.5em auto;
+}
+
+/* Individual list section */
+.list_section {
+    padding: 1.5em;
+    background-color: hsla(43, 100%, 51%, 1);
+
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.list_section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ordered list and list items styling */
+ol {
+    list-style: inside;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+ol li {
+    font-size: 1rem;
+
+    padding: 1em;
+    margin: 1em 0;
+    background-color: #fff;
+    border: 2px solid midnightblue;
+    border-radius: 10px;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+ol li:hover {
+    background-color: #f0f8ff;
+    transform: scale(1.05);
+}
+
+.task_detail{
+    font-style: normal;
+    text-decoration: double lightslategray;
+    margin: 0.5em;
+    padding: 1px;
+}
+
+/*To-do list */
+#To-Do_List_Section{
+    border: 3px groove lightgreen;
+
+}
+
+/*Completed List*/
+#Completed_List_Section{
+     border: 3px groove lightslategray;
+}
+
+.newTaskForm{
+    padding: 1em;
+    margin: 1em auto;
+
+    border: 3px solid green;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+ol .newTaskForm input{
+    font-size: 1em;
+    width: 10em;
+    height: 2em;
+    display: block;
+
+    border: 1px solid black;
+    border-radius: 2em;
+
+    margin: 0.5em auto;
+    filter: drop-shadow(1px 3px 3px rgba(0, 0, 0, 0.5));
+    transition: transform 0.2s, drop-shadow 0.2s;
+}
+
+ol input:focus{
+    transform: scale(1.1);
+    drop-shadow(1px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/*Buttons*/
+button {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5em 1em;
+
+    background-color: lightblue;
+    color: black;
+
+    border: 1px ridge black;
+    border-radius: 5px;
+
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: cyan;
+    color: darkgreen;
+}
+
+#NewTaskBtn{
+    padding-bottom: 1em;
+}
+.add_btn{
+    width: 6em;
+    height: 4em;
+
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    font-size: 1em;
+    background-color: lightgreen;
+    margin: auto;
+    text-align: center;
+
+}
+.add_btn:hover{
+    color: green;
+}
+.add_btn:active {
+    background-color: lightgreen;
+}
+
+ol li .add_btn{
+    height: 3em;
+    width: 2em;
+}
+
+.delete_btn{
+    background-color: lightcoral;
+    padding: 0.5em;
+    margin: 1em;
+    border-radius: 2em;
+}
+
+
+/*Link to jump from bottom to top */
+#jump_top{
+    display: inline-block ;
+    color: white;
+    padding: 0.5em;
+    margin: 4em auto;
+
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+
+    border: 2px double green;
+    border-radius: 12px;
+
+}
+#jump_top:hover{
+    text-decoration: underline;
+    transform: scale(1.05);
+
+}
+
+
+/**{*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    text-align: center;*/
+/*}*/
+
+@media screen and (max-device-width: 768px){
+    .nav_bar{
+        position: relative;
+
+    }
+    .nav_links{
+        display: none;
+        flex-direction: column;
+
+        top: 2vw;
+        right: 0;
+
+        border-radius: 10px;
+        width: 10vw;
+        height: auto;
+
+        padding: 15px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+
+    }
+    .nav_links.active{
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(0);
+        transition: transform 0.3s ease-in-out;
+        box-shadow: black 2px 1px 2px 2px ;
+    }
+
+    .nav_links li a{
+        display: block;
+    }
+    .nav_links.active li a:hover{
+        transform: scale(1.2);
+    }
+
+    .hamburger{
+        display: block;
+        position: fixed;
+    }
+
+
+    #lists_container{
+        width: 80%;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+
+    }
+
+    .list_section {
+        width: 100%;
+        margin: auto;
+
+        align-content: center;
+        text-align: center;
+
+    }
+
+    ol li {
+        font-size: 0.9em;
+        padding: 0.5em;
+    }
+}
