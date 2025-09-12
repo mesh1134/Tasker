@@ -2,7 +2,7 @@
 
 A clean and simple to-do list application built with Node.js, Express, and MongoDB. This project demonstrates fundamental full-stack web development principles, including user authentication, session management, and RESTful API design.
 
-**Live Demo:** [Link to your deployed application]
+**Live Demo:** [Link to be given here soon]
 
 ## 📸 Application Preview
 
