@@ -1,4 +1,4 @@
-const apiUrl = "http://localhost:3000/tasks";
+const apiUrl = "/tasks";
 const apiURLCompleted = apiUrl + "/completed";
 
 const taskList = document.getElementById("To-Dos_List");

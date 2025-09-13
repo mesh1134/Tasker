@@ -44,6 +44,16 @@ app.use(session({
 // Connect to MongoDB
 (async () => {
     await mongoose.connect(process.env.URI).then(() => {
+        app.get('/', (req, res) => {
+            // Check if user is logged in
+            if (req.session && req.session.userId) {
+                // User is logged in, serve the main app
+                res.sendFile(path.join(__dirname, 'front_end', 'html', 'index.html'));
+            } else {
+                // User is not logged in, redirect to login
+                res.redirect('/html/login.html');
+            }
+        });
         console.log('Connected to MongoDB (Tasker database).');
     }).catch((err) => {
         console.error('MongoDB Connection Error:', err);
@@ -55,22 +65,19 @@ app.use(session({
 const Task = require('./models/Task');
 const CompletedTask = require('./models/Task');
 
-function requireLogin(req, res, next){//checks if user needs to log in
+function requireLogin(req, res, next){
     try{
-        if (req.session && req.session.userId) return next();// if they are then next user
-
-        if (req.headers.accept && req.headers.accept.includes('application/json')){//checks if the client is expecting JSON response; if so, that means it is not an actual browser,
-            // which would request HTML, but the fetch function fetching the tasks
+        if (req.session && req.session.userId) return next();
+        if (req.headers.accept && req.headers.accept.includes('application/json')){
             return res.status(401).json({error:'Unauthorized'});
         }
-        return res.redirect('/html/login.html');//if the above conditions are false, that means the user needs to be logged in.
-
+        return res.redirect('/html/login.html');
     } catch (err) {
-
-    console.error('Login error', err);
-    return res.status(500).send('Server error');
+        console.error('Login error', err);
+        return res.status(500).send('Server error');
     }
 }
+
 
 app.post('/register', async (req,res) => {
     try{
@@ -78,7 +85,6 @@ app.post('/register', async (req,res) => {
         if (!username || !password) return res.status(400).json({error: 'Missing credentials'});
 
         const Username = username.toLowerCase();
-
         const existing = await User.findOne({username: Username} );
         if (existing) return res.status(409).json({error: 'Username taken'});
 
@@ -93,7 +99,7 @@ app.post('/register', async (req,res) => {
         console.error('register error', err);
         return res.status(500).send('Server, register error');
     }
-})
+});
 
 app.post('/login', async (req, res) => {
     try {
@@ -125,16 +131,15 @@ app.post('/logout', (req, res) => {
             if (err) return res.status(500).json({error: 'Logout failed'});
             res.clearCookie('tasker.sid');
             res.json({message: 'User logged out'});
-        })
-
-    } catch (err) {console.error('Login error', err);
-    return res.status(500).send('Server, logout error');
-}
-
-})
+        });
+    } catch (err) {
+        console.error('Logout error', err);
+        return res.status(500).send('Server, logout error');
+    }
+});
 
 //GET all tasks
-app.get('/tasks', async (req, res)=>{
+app.get('/tasks', requireLogin, async (req, res)=>{
     try {
         const tasks = await Task.find({ owner: req.session.userId} ).sort({ Deadline: 1 });
         console.log(tasks);
@@ -154,7 +159,7 @@ app.get('/tasks', async (req, res)=>{
 });
 
 //GET all completed tasks
-app.get('/tasks/completed',async (req,res)=>{
+app.get('/tasks/completed', requireLogin, async (req,res)=>{
     try {
         const completedTasks = await CompletedTask.find({owner: req.session.userId}).sort({ Deadline: 1 });
         console.log(completedTasks);
