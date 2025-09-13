@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Register Page</title>
-    </head>
-    <body>
-        <h1>Create an account</h1>
-        <form id="registerForm" method="post" action="/register">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Tasker</title>
+    <link rel="stylesheet" href="../css/auth-style.css">
+</head>
+<body>
+
+<div class="auth-container">
+    <h1>Create a <span>Tasker</span> Account</h1>
+    <p>Join us and start organizing your tasks!</p>
+
+    <form id="registerForm" class="auth-form" method="post" action="/register">
+        <div class="input-group">
             <label for="username">Username:</label>
-            <input id="username" name="username" required><br><br>
+            <input id="username" name="username" type="text" placeholder="e.g., johnsmith" required>
+        </div>
 
+        <div class="input-group">
             <label for="password">Password:</label>
-            <input id="password" name="password" type="password" required><br><br>
+            <input id="password" name="password" type="password" placeholder="A secure password" required>
+        </div>
 
-            <button>Register</button>
-        </form>
-    </body>
+        <button type="submit" class="auth-button">Create Account</button>
+    </form>
+
+    <div class="auth-footer">
+        <p>Already have an account? <a href="login.html">Login here!</a></p>
+    </div>
+</div>
+
+</body>
 </html>

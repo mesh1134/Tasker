@@ -66,15 +66,21 @@ async function fetchTasks(url=apiUrl) {
 function createTaskHTML(task, isCompleted = false) {
     return `
         <li>
-           ${!isCompleted ? `<button name="complete_btn" class="add_btn" 
+           ${!isCompleted ? `<button name="complete_btn" class="btn btn-complete" 
             onclick="completeTask(this,'${task._id}','${task.Name}','${task.Deadline}')"> 
-               <i class="fa-regular fa-circle-check fa-xl"></i></button>`:''}
-           To-Do:<span class="task_detail"><b>${task.Name}</b></span><br> 
-            By <span class="task_detail"><b>${formatDeadline(task.Deadline)}</b></span><br>
-            <button class="delete_btn" onclick="deleteTask('${task._id}', ${isCompleted})">
-                <i class="fa-solid fa-trash-can fa-lg"></i> Delete</button>
-            ${!isCompleted ? `<button class="edit_btn" onclick="editTask(this, '${task._id}')">
-            <i class="fa-solid fa-pen"></i> Edit</button>` : ''}
+               <i class="fa-regular fa-circle-check"></i></button>` : '<div style="width: 39px;"></div>' /* Placeholder for alignment */ }
+           
+           <div class="task-content">
+                <span class="task_detail">${task.Name}</span>
+                <span class="task_detail">${formatDeadline(task.Deadline)}</span>
+           </div>
+
+           <div class="task-actions">
+                ${!isCompleted ? `<button class="btn btn-edit" onclick="editTask(this, '${task._id}')">
+                <i class="fa-solid fa-pen"></i></button>` : ''}
+                <button class="btn btn-danger" onclick="deleteTask('${task._id}', ${isCompleted})">
+                    <i class="fa-solid fa-trash-can"></i></button>
+           </div>
         </li>`;
 }
 

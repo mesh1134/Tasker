@@ -2,23 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login Page</title>
-</head>y
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Tasker</title>
+    <link rel="stylesheet" href="../css/auth-style.css">
+</head>
 <body>
-    <h1>Login here!</h1>
-    <div id="Login_Container">
-        <h2>Please fill out your credentials or <a href="register.html">register!</a></h2><br>
-        <form id="Login_Form" method="post" action="/login">
+
+<div class="auth-container">
+    <h1>Welcome back to <span>Tasker</span></h1>
+    <p>Please enter your credentials to log in.</p>
+
+    <form id="Login_Form" class="auth-form" method="post" action="/login">
+        <div class="input-group">
             <label for="username">Username:</label>
-            <input id="username" name="username" required><br><br>
+            <input id="username" name="username" type="text" placeholder="e.g., johnsmith" required>
+        </div>
 
+        <div class="input-group">
             <label for="password">Password:</label>
-            <input id="password" name="password" type="password" required><br><br>
+            <input id="password" name="password" type="password" placeholder="••••••••" required>
+        </div>
 
-            <button>Submit</button>
+        <button type="submit" class="auth-button">Login</button>
+    </form>
 
-        </form>
+    <div class="auth-footer">
+        <p>Don't have an account? <a href="register.html">Register here!</a></p>
     </div>
+</div>
 
 </body>
 </html>
