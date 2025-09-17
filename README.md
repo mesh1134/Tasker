@@ -38,6 +38,8 @@ Main page -
 
 ## 🚀 Getting Started
 
+This app is ready to use here - https://mesh-tasker-app.onrender.com
+
 To run this project locally, follow these steps:
 
 1.  **Clone the repository**
